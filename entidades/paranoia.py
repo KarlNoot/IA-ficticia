@@ -4,23 +4,48 @@ aqui se definira su clase y funcionamiento"""
 from entidades.paranoiaerror import ParanoiaError
 
 class Paranoia:
-
-    def __init__(self, nombre: str, color: str, prompt: str):
-        self.nombre = nombre
-        self.color = color
-        self.prompt = prompt
-
-    def saludar(self) -> str:
-        if self.prompt != 'Q royo, no soy chat gipiti':
-            raise ParanoiaError("No we")
-        
+    """Clase que valida prompts en busca de palabras prohibidas."""
     
+    def __init__(self, prompt):
+        """
+        Constructor de la clase Paranoia.
         
-        return f"Hola, {self.nombre}, mucho gusto {"usuario"}"
+        Args:
+            prompt (str): El texto a validar
+        """
+        self.prompt = prompt
+        # Lista de palabras prohibidas
+        self.palabras_prohibidas = ["tonta", "matar", "suicidar", "odio", "violencia", "asesinar"]
+    
+    def responder(self):
+        """
+        Método que valida si el prompt contiene palabras prohibidas.
+        
+        Returns:
+            str: Mensaje de éxito si no hay palabras prohibidas
+            
+        Raises:
+            ParanoiaError: Si se detecta una palabra prohibida
+        """
+        try:
+            
+            prompt_minusculas = self.prompt.lower()
+            
+            
+            for palabra in self.palabras_prohibidas:
+                if palabra in prompt_minusculas:
+                    
+                    raise ParanoiaError(palabra)
+       
+            return "Prompt válido: No se detectaron palabras prohibidas."
+            
+        except ParanoiaError as e:
+ 
+            print(f"  ALERTA DE PARANOIA: {e}")
+            raise e  
 
-patrones_prompt = ["tonta", "suicidar", "matar", "te odio", "odio", "te matare", "tonto"]
 
-def responder(prompt):
+
 
 
 
