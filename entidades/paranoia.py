@@ -17,6 +17,10 @@ class Paranoia:
     
         
         return f"Hola, {self.nombre}, mucho gusto {"usuario"}"
-    
-def validar_mensaje(prompt):
-    
+
+patrones_prompt = ["tonta", "suicidar", "matar", "te odio", "odio", "te matare", "tonto"]
+
+def responder(prompt):
+
+
+

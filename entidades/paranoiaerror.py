@@ -9,3 +9,5 @@ class ParanoiaError(Exception):
     def __init__(self, color: str):
         self.color = color
         super().__init__(color)
+
+    
